@@ -1,0 +1,25 @@
+body {
+	margin: 0;
+	padding: 0;
+}
+
+:root {
+	--primary: #3e2723;
+	--light-primary: #d3b8ae;
+	--dark-primary: #1b0000;
+	--secondary: #bb4d00;
+	--dark-secondary: #ac1900;
+	--white: #FFF;
+	--color: #ffc107;
+	--font-family: 'Orbitron', sans-serif;
+}
+.loading {
+	height: 100vh;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	background: var(--primary);
+	filter: opacity(.85);
+	color: var(--white);
+}

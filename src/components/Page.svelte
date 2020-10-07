@@ -38,11 +38,14 @@
     font-size: 1.5rem;
     user-select: none;
   }
+  .details {
+    text-decoration: none;
+    width: 50%;
+  }
   .more {
     margin-top: 10px;
     background: var(--secondary);
     color: var(--white);
-    width: 50%;
     padding: 5px;
     border-radius: 7px;
     border: 2px solid var(--color);
@@ -76,7 +79,9 @@
       <div class="title">
         {$store.title}
       </div>
-      <div class="more">Saber mas ...</div>
+      <a href="details" class="details">
+        <div class="more">Saber mas ...</div>
+      </a>
     </div>
   </div>
   <Thumbnail {data} />

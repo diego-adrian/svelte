@@ -4,6 +4,8 @@ const state = {
   id: null,
   url: null,
   title: null,
-  actors: null
+  actors: null,
+  movies: []
 };
+
 export const store = writable(state);
