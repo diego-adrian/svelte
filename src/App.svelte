@@ -46,7 +46,6 @@
 				elem.trailer = videos[idx];
 				return elem;
 			});
-			console.log(response);
 			const elem = response[0];
 			store.update(state => ({
 				...state,
