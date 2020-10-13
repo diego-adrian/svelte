@@ -4,48 +4,61 @@
 	import { store } from './store';
 	import Page from './components/Page.svelte';
 	import Snackbar from './components/Snackbar.svelte';
+	import Youtube from './components/Youtube.svelte';
 
   let data = [];
   onMount(async () => {
-    let response = await fetch('https://imdb8.p.rapidapi.com/title/find?q=avengers infinity war', {
-      'method': 'GET',
-      'headers': {
-        'x-rapidapi-host': 'imdb8.p.rapidapi.com',
-        'x-rapidapi-key': 'ca557394aemsh2b2f1e6bd325b3fp10dd54jsn7dacdc2cca7c'
-      }
-    });
+		const videos = [
+			'6ZfuNTqbHE8',
+			'QwievZ1Tx-8',
+			'xzSFzymwH1g',
+			'W-DCNBoCCdY',
+			'B65hW9YYY5A',
+			'osSJhXruEzU',
+			'ZQpWRenGF_w',
+			'823iAZOEKt8'
+		];
+		const API_KEY = '7e333f59';
+		const query = 'avengers';
+    let response = await fetch(`https://www.omdbapi.com/?s=${query}&apikey=${API_KEY}&plot=full`);
 		response = await response.json();
-		if (response.message) {
+		if (response.Error) {
 			store.update(state => ({
 				...state,
-				title: response.message,
+				title: response.Error,
 				type: 'error',
 				show: true
 			}));
 		} else {
-			response = [...response.results].reduce((container, movie) => {
-				if (movie.image) {
+			response = [...response.Search].reduce((container, movie) => {
+				if (movie.Poster) {
 					const objMovie = {
-						id: movie.id,
-						url: movie.image.url,
-						title: movie.title,
-						actors: movie.principals
+						id: movie.imdbID,
+						url: movie.Poster.replace('X300', ''),
+						title: movie.Title
 					};
 					container.push(objMovie);
 				}
 				return container;
 			}, []);
+			response = response.map((item, idx) => {
+				const elem = item;
+				elem.trailer = videos[idx];
+				return elem;
+			});
+			console.log(response);
 			const elem = response[0];
 			store.update(state => ({
 				...state,
 				id: elem.id,
 				url: elem.url,
 				title: elem.title,
-				actors: elem.actors,
+				trailer: elem.trailer
 			}));
 			data = response;
 		}
-  });
+	});
+	
 </script>
 
 <style>
@@ -165,6 +178,7 @@
 
 <main>
 	<Snackbar />
+	<Youtube />
 	{#if data.length > 0}
 		<div transition:fade>
 			<Page {data} />

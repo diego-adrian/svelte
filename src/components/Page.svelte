@@ -1,7 +1,22 @@
 <script>
   import { store } from '../store';
+  import { fade } from 'svelte/transition';
   import Thumbnail from './Thumbnail.svelte';
   export let data;
+
+  function trailer () {
+    store.update(state => ({
+      ...state,
+      youtube: true
+    }));
+  }
+
+  function closeYoutube () {
+    store.update(state => ({
+      ...state,
+      youtube: false
+    }));
+  }
 </script>
 
 <style>
@@ -70,13 +85,15 @@
 <div class="Portada">
   <div class="background" style="background: url({$store.url}) no-repeat;">
     <div class="Portada-container">
-      <div class="trailer">
+      <div class="trailer" on:click={trailer}>
         <i class="fab fa-youtube"/> <span>Ver trailer</span>
       </div>
       <div class="title">
         {$store.title}
       </div>
-      <div class="more">Saber mas ...</div>
+      {#if $store.youtube}
+        <div transition:fade class="more" on:click={closeYoutube}>Cerrar youtube</div>
+      {/if}
     </div>
   </div>
   <Thumbnail {data} />

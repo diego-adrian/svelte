@@ -7,6 +7,8 @@ const state = {
   actors: null,
   message: null,
   type: null,
-  show: false
+  show: false,
+  youtube: false,
+  trailer: null
 };
 export const store = writable(state);
