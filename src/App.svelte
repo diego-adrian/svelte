@@ -9,12 +9,13 @@
   let data = [];
   onMount(async () => {
 		const videos = [
-			'6ZfuNTqbHE8',
-			'QwievZ1Tx-8',
-			'xzSFzymwH1g',
-			'W-DCNBoCCdY',
-			'B65hW9YYY5A',
-			'osSJhXruEzU',
+			'9hpWz0ZMFAo',
+			'3xk11d9hjp0',
+			'n1qhwqKZ1eY',
+			'kpVsn9oQip0',
+			'SLD9xzJ4oeU',
+			'yNXfOOL8824',
+			'An_NsOddM3o',
 			'ZQpWRenGF_w',
 			'823iAZOEKt8'
 		];

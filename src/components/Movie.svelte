@@ -8,7 +8,7 @@
       id: movie.id,
       url: movie.url,
       title: movie.title,
-      trailer: movie.trailer
+      trailerActive: movie.trailer
     }));
   }
 </script>

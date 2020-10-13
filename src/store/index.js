@@ -9,6 +9,7 @@ const state = {
   type: null,
   show: false,
   youtube: false,
-  trailer: null
+  trailer: null,
+  trailerActive: null
 };
 export const store = writable(state);

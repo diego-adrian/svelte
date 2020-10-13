@@ -14,7 +14,8 @@
   function closeYoutube () {
     store.update(state => ({
       ...state,
-      youtube: false
+      youtube: false,
+      trailer: state.trailerActive
     }));
   }
 </script>
