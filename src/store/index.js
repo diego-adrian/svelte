@@ -4,6 +4,9 @@ const state = {
   id: null,
   url: null,
   title: null,
-  actors: null
+  actors: null,
+  message: null,
+  type: null,
+  show: false
 };
 export const store = writable(state);

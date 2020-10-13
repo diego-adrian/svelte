@@ -3,10 +3,13 @@
   export let movie;
 
   function setMovie () {
-    $store.id = movie.id;
-    $store.url = movie.url;
-    $store.title = movie.title;
-    $store.actors = movie.title;
+    store.update(state => ({
+      ...state,
+      id: movie.id,
+      url: movie.url,
+      title: movie.title,
+      actors: movie.title
+    }));
   }
 </script>
 
